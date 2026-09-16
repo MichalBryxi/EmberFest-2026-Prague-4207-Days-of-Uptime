@@ -1,0 +1,16 @@
+{
+  "name": "emberfest-slides",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md --format pdf --timeout 30000 --wait 4300"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.19.1",
+    "@slidev/theme-default": "0.25.0",
+    "vue": "^3.5.0"
+  }
+}

@@ -1,0 +1,481 @@
+/*
+ * "Sunburst" — a colorful, hippie-poster theme: warm parchment for content
+ * slides with a rotating rainbow accent, deep-plum tie-dye chapter breaks
+ * (cover / center / section / quote), JetBrains Mono everywhere. Built on
+ * @slidev/theme-default.
+ */
+
+:root {
+  /* parchment (content slides) */
+  --h-cream: #fbf3e2;
+  --h-cream-2: #f3e6c8;
+  --h-ink: #2b1710;
+  --h-ink-soft: #6b4a36;
+
+  /* plum (chapter slides — cover / center / section / quote) */
+  --h-plum: #341635;
+  --h-plum-2: #210f22;
+  --h-plum-ink: #fbf3e2;
+
+  /* the five-color rotation */
+  --h-magenta: #d6247d;
+  --h-orange: #e8720c;
+  --h-gold: #b8860b;
+  --h-teal: #157a6e;
+  --h-violet: #6a2c70;
+
+  /* brighter tints for use on the dark plum ground */
+  --h-magenta-bright: #ff5ea8;
+  --h-orange-bright: #ff9a3d;
+  --h-gold-bright: #ffcb47;
+  --h-teal-bright: #4dd8c6;
+  --h-violet-bright: #b472c4;
+
+  --slidev-theme-primary: var(--h-magenta);
+  --slidev-code-background: var(--h-cream-2);
+  --slidev-code-foreground: var(--h-ink);
+  --slidev-slide-container-background: var(--h-plum-2);
+  --slidev-controls-foreground: var(--h-plum-ink);
+}
+
+html.dark {
+  --h-cream: #2a1a1c;
+  --h-cream-2: #331f22;
+  --h-ink: #f7ead6;
+  --h-ink-soft: #d8b8a0;
+}
+
+html,
+body {
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4 {
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-weight: 800;
+  text-wrap: balance;
+  margin-bottom: 0.7rem;
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.intro h1 {
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* content slides: parchment surface */
+.slidev-layout {
+  background: var(--h-cream);
+  color: var(--h-ink);
+}
+
+.slidev-layout h6:not(.opacity-100) {
+  color: var(--h-ink-soft);
+  opacity: 1;
+}
+
+.slidev-layout blockquote {
+  border-left-width: 4px;
+  border-color: var(--h-magenta);
+  color: var(--h-magenta);
+  margin: 1.75rem 0;
+  padding: 0.9rem 1.3rem;
+}
+
+.slidev-layout blockquote p {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* rotating rainbow bullet markers */
+.slidev-layout ul > li:nth-child(5n + 1)::marker {
+  color: var(--h-magenta);
+}
+.slidev-layout ul > li:nth-child(5n + 2)::marker {
+  color: var(--h-orange);
+}
+.slidev-layout ul > li:nth-child(5n + 3)::marker {
+  color: var(--h-gold);
+}
+.slidev-layout ul > li:nth-child(5n + 4)::marker {
+  color: var(--h-teal);
+}
+.slidev-layout ul > li:nth-child(5n + 5)::marker {
+  color: var(--h-violet);
+}
+
+/* chapter slides: deep plum, tie-dye */
+.slidev-layout.cover,
+.slidev-layout.intro,
+.slidev-layout.center,
+.slidev-layout.section,
+.slidev-layout.quote,
+.slidev-layout.statement,
+.slidev-layout.fact {
+  --slidev-theme-primary: var(--h-orange-bright);
+  background: var(--h-plum);
+  color: var(--h-plum-ink);
+}
+
+.slidev-layout.section,
+.slidev-layout.quote,
+.slidev-layout.center,
+.slidev-layout.statement,
+.slidev-layout.fact {
+  background: linear-gradient(135deg, var(--h-plum) 0%, #4a1f3e 55%, var(--h-plum-2) 100%);
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  background:
+    radial-gradient(circle at 15% 12%, rgba(214, 36, 125, 0.55) 0%, transparent 40%),
+    radial-gradient(circle at 88% 18%, rgba(255, 203, 71, 0.45) 0%, transparent 38%),
+    radial-gradient(circle at 80% 88%, rgba(21, 122, 110, 0.5) 0%, transparent 42%),
+    radial-gradient(circle at 15% 85%, rgba(232, 114, 12, 0.4) 0%, transparent 38%),
+    repeating-conic-gradient(from 0deg at 50% 45%, rgba(255, 255, 255, 0.04) 0deg 6deg, transparent 6deg 18deg),
+    var(--h-plum);
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.intro h1 {
+  position: relative;
+  padding-top: 1.4rem;
+}
+
+.slidev-layout.cover h1::before,
+.slidev-layout.intro h1::before {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--h-orange-bright);
+  box-shadow:
+    22px 0 0 var(--h-gold-bright),
+    44px 0 0 var(--h-teal-bright),
+    66px 0 0 var(--h-magenta-bright);
+  margin-bottom: 1.1rem;
+}
+
+.slidev-layout.cover h3,
+.slidev-layout.intro h3,
+.slidev-layout.section h3 {
+  color: var(--h-violet-bright);
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  font-weight: 500;
+}
+
+.slidev-layout.quote blockquote {
+  background: transparent;
+  color: inherit;
+  border-left-width: 4px;
+  border-color: var(--h-gold-bright);
+}
+
+/* scattered, overlapping polaroid collage ("Things I Like") - breaks out
+   of .slidev-layout's own px-14/py-10 padding to use the full canvas,
+   and individual cards are allowed to peek slightly past its edges. */
+.photo-scatter {
+  position: relative;
+  width: calc(100% + 7rem);
+  height: 100%;
+  margin: -2.5rem -3.5rem;
+  overflow: visible;
+}
+
+.photo-scatter figure {
+  position: absolute;
+  margin: 0;
+  background: #fffdf6;
+  padding: 10px 10px 38px;
+  border-radius: 4px;
+  transform: rotate(var(--rot, 0deg));
+  opacity: 0;
+  animation: photo-drop-in 0.5s ease forwards;
+}
+
+@keyframes photo-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.92) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--rot, 0deg));
+  }
+}
+
+/* auto-reveal, one photo at a time, in DOM order - same "no click
+   needed" treatment as the About Me lists. */
+.photo-scatter figure:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.photo-scatter figure:nth-child(2) {
+  animation-delay: 0.35s;
+}
+.photo-scatter figure:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.photo-scatter figure:nth-child(4) {
+  animation-delay: 0.85s;
+}
+.photo-scatter figure:nth-child(5) {
+  animation-delay: 1.1s;
+}
+.photo-scatter figure:nth-child(6) {
+  animation-delay: 1.35s;
+}
+
+.photo-scatter img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 1px;
+}
+
+.photo-scatter figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  text-align: center;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.photo-scatter figure::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: calc(50% - 8px);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.photo-scatter figure:nth-child(6n + 1) figcaption {
+  color: var(--h-magenta);
+}
+.photo-scatter figure:nth-child(6n + 1)::before {
+  background: var(--h-magenta);
+}
+.photo-scatter figure:nth-child(6n + 2) figcaption {
+  color: var(--h-orange);
+}
+.photo-scatter figure:nth-child(6n + 2)::before {
+  background: var(--h-orange);
+}
+.photo-scatter figure:nth-child(6n + 3) figcaption {
+  color: var(--h-gold);
+}
+.photo-scatter figure:nth-child(6n + 3)::before {
+  background: var(--h-gold);
+}
+.photo-scatter figure:nth-child(6n + 4) figcaption {
+  color: var(--h-teal);
+}
+.photo-scatter figure:nth-child(6n + 4)::before {
+  background: var(--h-teal);
+}
+.photo-scatter figure:nth-child(6n + 5) figcaption {
+  color: var(--h-violet);
+}
+.photo-scatter figure:nth-child(6n + 5)::before {
+  background: var(--h-violet);
+}
+.photo-scatter figure:nth-child(6n + 6) figcaption {
+  color: var(--h-magenta);
+}
+.photo-scatter figure:nth-child(6n + 6)::before {
+  background: var(--h-magenta);
+}
+
+.slidev-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: inherit;
+  opacity: 0.85;
+  text-decoration: none;
+  border-bottom: none !important;
+}
+
+.slidev-contact:hover {
+  opacity: 1;
+  color: var(--h-orange-bright) !important;
+}
+
+/* origin-story chat bubbles */
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.chat .msg {
+  max-width: 72%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.chat .msg-left {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.chat .msg-right {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.chat .who {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0 0.3rem;
+}
+
+.chat .msg-left .who {
+  color: var(--h-teal);
+}
+
+.chat .msg-right .who {
+  color: var(--h-magenta);
+}
+
+.chat p {
+  margin: 0;
+  padding: 0.7rem 1.1rem;
+  border-radius: 1.1rem;
+  line-height: 1.4;
+}
+
+.chat .msg-left p {
+  background: var(--h-magenta);
+  color: var(--h-cream);
+  border-bottom-left-radius: 0.3rem;
+}
+
+.chat .msg-right p {
+  background: var(--h-cream-2);
+  border-bottom-right-radius: 0.3rem;
+}
+
+/* generic "card" component - no framework component for this in a
+   bare Slidev deck, so it's hand-rolled CSS like everything else
+   here (.chat, .photo-scatter). A light card floating on the dark
+   chapter background, reused by "The stack". */
+.card {
+  background: var(--h-cream);
+  color: var(--h-ink);
+  border-radius: 14px;
+  padding: 0.9rem 1.4rem;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  flex: 1 1 280px;
+  max-width: 300px;
+  text-align: center;
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.card ul {
+  margin: 0;
+}
+
+.card li {
+  margin: 0.1rem 0;
+}
+
+.word-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.1rem 0.7rem;
+  padding-top: 0.1rem;
+}
+
+.claims-word {
+  font-size: 7rem;
+  letter-spacing: -0.02em;
+}
+
+.stack-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.2rem;
+}
+
+.stack-row .card {
+  flex: 0 1 auto;
+  max-width: none;
+}
+
+.stack-row .card li {
+  white-space: nowrap;
+}
+
+.word-cloud span {
+  font-weight: 800;
+  white-space: nowrap;
+  line-height: 1.15;
+}
+
+.word-cloud .wc-1 {
+  font-size: 2.1rem;
+}
+.word-cloud .wc-2 {
+  font-size: 1.6rem;
+}
+.word-cloud .wc-3 {
+  font-size: 1.2rem;
+}
+.word-cloud .wc-4 {
+  font-size: 0.95rem;
+}
+.word-cloud .wc-5 {
+  font-size: 0.8rem;
+}
+.word-cloud .wc-6 {
+  font-size: 0.65rem;
+  opacity: 0.55;
+}
+
+.word-cloud span:nth-child(5n + 1) {
+  color: var(--h-magenta);
+}
+.word-cloud span:nth-child(5n + 2) {
+  color: var(--h-orange);
+}
+.word-cloud span:nth-child(5n + 3) {
+  color: var(--h-gold);
+}
+.word-cloud span:nth-child(5n + 4) {
+  color: var(--h-teal);
+}
+.word-cloud span:nth-child(5n + 5) {
+  color: var(--h-violet);
+}
+
+.game-star {
+  font-size: 5rem;
+  line-height: 1;
+  margin: 0.4rem 0 0.1rem;
+}
